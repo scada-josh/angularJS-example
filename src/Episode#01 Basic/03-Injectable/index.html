@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" ng-app="TodosModule">
+<head>
+  <meta charset="utf-8">
+  <title>03-Injectable - The dependency injection</title>
+  <link rel="stylesheet" href="../../../lib/bootstrap-2.3.2/css/bootstrap.min.css">
+  <script src="../../../lib/angular-1.0.7/angular.min.js"></script>
+   <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script> -->
+
+   <script src="./index.config.js"></script> 
+   <script src="./Controller/todosController.js"></script>
+   <script src="./Model/todosModel.js"></script> 
+
+   <style type="text/css">
+	   .done-true {
+		   	text-decoration: line-through;
+		   	color: grey;
+	   }
+   </style>
+
+</head>
+<body>
+
+	<div class="container row span4 offset5" ng-controller="todosCtrl">
+		<div class="page-header">
+				<span class="lead"><strong>Todos</strong> - The dependency injection</span>
+			<blockquote >
+				<small class="pull-left">by THE JOSH <cite class="text-info" title="Source Title">, scada.josh@gmail.com</cite></small>
+			</blockquote>
+		</div>
+		
+
+		<div class="input-append">
+			<input type="text" ng-model="todoText" placeholder="add new todo here" class="span3" ng-enter="addTodo()">
+			<button class="btn" type="button" ng-click="addTodo()">ADD</button>
+			<button class="btn" type="button" ng-click="archive()">DELETE</button>
+		</div>
+		<span class="help-block">selected {{remaining()}} of {{todos.length}} remaining</span>
+
+		<div class="control-group">
+			<div class="controls" ng-repeat="todo in todos">
+				<label class="checkbox">
+				   <input type="checkbox" ng-model="todo.done"> 
+				   <span class="done-{{todo.done}}">{{todo.text}}</span>
+				</label>
+			</div>
+		</div>
+		
+	</div>
+ 
+</body>
+</html>
